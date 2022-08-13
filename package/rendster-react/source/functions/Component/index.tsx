@@ -1,7 +1,17 @@
 // #region imports
     // #region libraries
-    import React from 'react';
+    import React, {
+        useEffect,
+    } from 'react';
     // #endregion libraries
+
+
+    // #region external
+    import {
+        RendsterComponentContext,
+        RendsterComponentController,
+    } from '~data/interfaces';
+    // #endregion external
 // #region imports
 
 
@@ -10,7 +20,7 @@
 export interface ComponentProperties {
     // #region required
         // #region values
-        render: JSX.Element;
+        Render: React.FC<any>,
         // #endregion values
 
         // #region methods
@@ -19,6 +29,9 @@ export interface ComponentProperties {
 
     // #region optional
         // #region values
+        __rendster?: RendsterComponentContext;
+        controllers?: RendsterComponentController[];
+        group?: string;
         // #endregion values
 
         // #region methods
@@ -33,7 +46,7 @@ const Component: React.FC<ComponentProperties> = (
     const {
         // #region required
             // #region values
-            render,
+            Render,
             // #endregion values
 
             // #region methods
@@ -42,19 +55,43 @@ const Component: React.FC<ComponentProperties> = (
 
         // #region optional
             // #region values
+            __rendster,
+            controllers,
+            group,
             // #endregion values
 
             // #region methods
             // #endregion methods
         // #endregion optional
     } = properties;
+
+    const name = Render.name;
     // #endregion properties
+
+
+    // #region effects
+    useEffect(() => {
+        if (__rendster && controllers) {
+            __rendster.registerControllers(name, controllers);
+        }
+    }, [
+        JSON.stringify(controllers),
+    ]);
+
+    useEffect(() => {
+        if (__rendster && group) {
+            __rendster.addToGroup(name, group);
+        }
+    }, [
+        group,
+    ]);
+    // #endregion effects
 
 
     // #region render
     return (
         <div>
-            {render}
+            <Render />
         </div>
     );
     // #endregion render
