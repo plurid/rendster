@@ -15,7 +15,11 @@
 
 
     // #region internal
-    import start from './commands/start';
+    import start, {
+        START_DEFAULT_PORT,
+        START_DEFAULT_SOURCE,
+        START_DEFAULT_EXTENSION,
+    } from './commands/start';
     // #endregion internal
 // #endregion imports
 
@@ -45,9 +49,17 @@ const cli = () => {
         .option(
             '-p, --port <value>',
             'the "rendster" server port',
-            '9001',
-        ).action(async (options: any)=> {
-            start(options);
+            START_DEFAULT_PORT + '',
+        ).option(
+            '-s, --source [directories...]',
+            'directories with "rendster" components',
+            START_DEFAULT_SOURCE,
+        ).option(
+            '-e, --extension <value>',
+            `extension used by "rendster" components, e.g. "Foo${START_DEFAULT_EXTENSION}" · language detected automatically`,
+            START_DEFAULT_EXTENSION,
+        ).action(async (options)=> {
+            await start(options);
         });
 
     program.parseAsync(process.argv);
