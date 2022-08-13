@@ -9,7 +9,7 @@
 // #region module
 export const START_DEFAULT_PORT = 9001;
 export const START_DEFAULT_SOURCE = ['./src', './source'];
-export const START_DEFAULT_EXTENSION = '.rendster.tsx';
+export const START_DEFAULT_EXTENSION = 'rendster.tsx';
 
 const exitEvents = [
     'exit', 'SIGINT', 'SIGUSR1', 'SIGUSR2', 'uncaughtException', 'SIGTERM',
