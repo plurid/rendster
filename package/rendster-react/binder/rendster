@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+const rendsterCLI = require('../distribution/index.cli.js').default;
+
+rendsterCLI();
