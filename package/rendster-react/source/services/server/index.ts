@@ -2,6 +2,7 @@
     // #region internal
     import {
         findRendsters,
+        parseRendsters,
     } from './logic';
     // #endregion internal
 // #endregion methods
@@ -28,12 +29,16 @@ class Server {
 
 
     public async start() {
-        const files = await findRendsters(
+        const rendsters = await findRendsters(
             this.options.source,
             this.options.extension,
         );
 
-        console.log('start server', this.options, files);
+        await parseRendsters(
+            rendsters,
+        );
+
+        console.log('start server', this.options, rendsters);
     }
 
     public close() {
