@@ -27,6 +27,8 @@ const build = {
     external: [
         'commander',
         'react',
+        'fs',
+        'path',
     ],
     watch: {
         include: 'source/**',
