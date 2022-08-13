@@ -14,6 +14,46 @@
             "~services/*": [
                 "./source/services/*"
             ],
+
+            "~client/*": [
+                "./source/services/server/application/client/*"
+            ],
+            "~public/*": [
+                "./source/services/server/application/public/*"
+            ],
+            "~server/*": [
+                "./source/services/server/application/server/*"
+            ],
+            "~shared/*": [
+                "./source/services/server/application/shared/*"
+            ],
+            "~kernel/*": [
+                "./source/services/server/application/shared/kernel/*"
+            ],
+            "~kernel-assets/*": [
+                "./source/services/server/application/shared/kernel/assets/*"
+            ],
+            "~kernel-components/*": [
+                "./source/services/server/application/shared/kernel/components/*"
+            ],
+            "~kernel-containers/*": [
+                "./source/services/server/application/shared/kernel/containers/*"
+            ],
+            "~kernel-data/*": [
+                "./source/services/server/application/shared/kernel/data/*"
+            ],
+            "~kernel-planes/*": [
+                "./source/services/server/application/shared/kernel/planes/*"
+            ],
+            "~kernel-services/*": [
+                "./source/services/server/application/shared/kernel/services/*"
+            ],
+            "~routes/*": [
+                "./source/services/server/application/shared/routes/*"
+            ],
+            "~shell/*": [
+                "./source/services/server/application/shared/shell/*"
+            ]
         },
 
         "outDir": "distribution",
