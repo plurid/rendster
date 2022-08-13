@@ -1,3 +1,13 @@
+// #region methods
+    // #region internal
+    import {
+        findRendsters,
+    } from './logic';
+    // #endregion internal
+// #endregion methods
+
+
+
 // #region module
 export interface ServerOptions {
     port: number;
@@ -17,8 +27,13 @@ class Server {
     }
 
 
-    public start() {
-        console.log('start server', this.options);
+    public async start() {
+        const files = await findRendsters(
+            this.options.source,
+            this.options.extension,
+        );
+
+        console.log('start server', this.options, files);
     }
 
     public close() {

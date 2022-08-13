@@ -28,7 +28,7 @@ const start = async (
         source,
         extension,
     });
-    server.start();
+    await server.start();
 
     exitEvents.forEach((eventType) => {
         process.on(eventType, () => {
