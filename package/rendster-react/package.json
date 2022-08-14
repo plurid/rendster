@@ -32,16 +32,32 @@
     "files": [
         "./distribution"
     ],
+    "bin": {
+        "rendster": "binder/rendster",
+        "rendster-react": "binder/rendster"
+    },
+    "preferGlobal": false,
     "scripts": {
-        "test": "jest -c ./configurations/jest.config.js --coverage ./source",
-        "start": "rollup -c ./scripts/rollup.config.ts -w",
-        "build.removeTests": "rm -rf `find ./distribution/ -type d -name __tests__`",
-        "build.types": "ttsc --emitDeclarationOnly",
-        "build.development": "rollup -c ./scripts/rollup.config.ts",
-        "build.production": "rollup -c ./scripts/rollup.config.ts",
-        "build": "yarn build.production && yarn build.types && yarn build.removeTests",
-        "prebuild": "rm -rf distribution",
-        "prepublishOnly": "yarn build"
+        "clean": "rm -rf distribution",
+
+        "cli.test": "jest -c ./configurations/jest.config.js --coverage ./source",
+        "cli.build.removeTests": "rm -rf `find ./distribution/ -type d -name __tests__`",
+        "cli.build.types": "ttsc --emitDeclarationOnly",
+        "cli.build.development": "rollup -c ./scripts/build-cli.ts",
+        "cli.build.production": "rollup -c ./scripts/build-cli.ts && pnpm build.types && pnpm build.removeTests",
+
+        "app.live": "node scripts/application live",
+        "app.check": "node scripts/application check",
+        "app.clean": "node scripts/application clean",
+        "app.lint": "node scripts/application lint",
+        "app.test": "node scripts/application test",
+        "app.build.production": "node scripts/application build.production",
+
+        "build.development": "pnpm clean && pnpm cli.build.development",
+        "build.production": "pnpm clean && pnpm cli.build.production && pnpm app.build.production",
+
+        "prebuild": "pnpm clean",
+        "prepublishOnly": "pnpm build.production"
     },
     "dependencies": {
         "commander": "^9.4.0",
