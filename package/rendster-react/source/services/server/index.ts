@@ -63,7 +63,7 @@ class Server {
             __dirname,
             './application/index.js',
         );
-        const serverStart = `node ${serverPath}`;
+        const serverStart = `PORT=${this.options.port} node ${serverPath}`;
 
         this.process = exec(serverStart);
 
