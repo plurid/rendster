@@ -25,10 +25,9 @@ const build = {
         },
     ],
     external: [
-        'fs',
         'node:fs',
-        'path',
         'node:path',
+        'node:child_process',
         'commander',
         'react',
         'esbuild',
