@@ -1,4 +1,17 @@
 // #region methods
+    // #region libraries
+    import fs from 'node:fs';
+    // #endregion libraries
+
+
+    // #region external
+    import {
+        RENDSTER_BUILD_DIRECTORY,
+        BUILD_DIRECTORY,
+    } from '~data/constants';
+    // #endregion external
+
+
     // #region internal
     import {
         findRendsters,
@@ -19,6 +32,7 @@ export interface ServerOptions {
 
 class Server {
     private options;
+    private cleaning = false;
 
 
     constructor(
@@ -42,7 +56,39 @@ class Server {
     }
 
     public close() {
+        this.cleanup();
+
         console.log('close server');
+    }
+
+
+    private cleanup() {
+        if (this.cleaning) {
+            return;
+        }
+
+        this.cleaning = true;
+
+        try {
+            fs.rmSync(
+                RENDSTER_BUILD_DIRECTORY,
+                {
+                    recursive: true,
+                },
+            );
+
+            const buildDirectory = fs.readdirSync(BUILD_DIRECTORY);
+            if (buildDirectory.length === 0) {
+                fs.rmSync(
+                    BUILD_DIRECTORY,
+                    {
+                        recursive: true,
+                    },
+                );
+            }
+        } catch (error) {
+            // console.log(error);
+        }
     }
 }
 // #endregion module

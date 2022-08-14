@@ -4,6 +4,13 @@
 
     import esbuild from 'esbuild';
     // #endregion libraries
+
+
+    // #region external
+    import {
+        RENDSTER_BUILD_DIRECTORY,
+    } from '~data/constants';
+    // #endregion external
 // #endregion imports
 
 
@@ -18,10 +25,7 @@ export const parseRendster = async (
         ? parsedPath.dir + '.js'
         : parsedPath.name + '.js';
 
-    const outfile = path.join(
-        process.cwd(),
-        '/build/__rendster/' + filename,
-    );
+    const outfile = RENDSTER_BUILD_DIRECTORY + filename;
 
     const result = await esbuild.build({
         entryPoints: [
@@ -44,8 +48,8 @@ export const parseRendster = async (
         },
         watch: {
             onRebuild(error, _result) {
-                if (error) console.error('watch build failed:', error);
-                else console.log('watch build succeeded');
+                // if (error) console.error('watch build failed:', error);
+                // else console.log('watch build succeeded');
             },
         },
     });
