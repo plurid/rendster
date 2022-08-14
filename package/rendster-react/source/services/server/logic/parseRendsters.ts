@@ -23,7 +23,7 @@ export const parseRendster = async (
 
     const filename = parsedPath.name === 'rendster'
         ? parsedPath.dir + '.js'
-        : parsedPath.name + '.js';
+        : parsedPath.name.replace('.rendster', '') + '.js';
 
     const outfile = RENDSTER_BUILD_DIRECTORY + filename;
 
