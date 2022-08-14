@@ -1,6 +1,6 @@
 // #region imports
     // #region libraries
-    import path from 'path';
+    import path from 'node:path';
 
     import esbuild from 'esbuild';
     // #endregion libraries

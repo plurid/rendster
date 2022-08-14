@@ -1,6 +1,6 @@
 // #region imports
     // #region libraries
-    import path from 'path';
+    import path from 'node:path';
     // #endregion libraries
 // #endregion imports
 

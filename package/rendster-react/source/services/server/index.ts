@@ -1,6 +1,10 @@
 // #region methods
     // #region libraries
     import fs from 'node:fs';
+    import {
+        exec,
+        ChildProcess,
+    } from 'node:child_process';
     // #endregion libraries
 
 
@@ -33,6 +37,7 @@ export interface ServerOptions {
 class Server {
     private options;
     private cleaning = false;
+    private process: ChildProcess | undefined;
 
 
     constructor(
@@ -52,6 +57,11 @@ class Server {
             rendsters,
         );
 
+        const serverPath = './distribution/application/index.js';
+        const serverStart = `node ${serverPath}`;
+
+        this.process = exec(serverStart);
+
         console.log('start server', this.options, rendsters);
     }
 
@@ -70,6 +80,10 @@ class Server {
         this.cleaning = true;
 
         try {
+            if (this.process) {
+                this.process.kill('SIGTERM');
+            }
+
             fs.rmSync(
                 RENDSTER_BUILD_DIRECTORY,
                 {
