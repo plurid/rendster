@@ -1,6 +1,7 @@
 // #region methods
     // #region libraries
     import fs from 'node:fs';
+    import path from 'node:path';
     import {
         exec,
         ChildProcess,
@@ -57,7 +58,11 @@ class Server {
             rendsters,
         );
 
-        const serverPath = './distribution/application/index.js';
+
+        const serverPath = path.join(
+            __dirname,
+            './application/index.js',
+        );
         const serverStart = `node ${serverPath}`;
 
         this.process = exec(serverStart);
