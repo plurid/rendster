@@ -1,10 +1,14 @@
 // #region imports
     // #region libraries
-    import React from 'react';
+    import React, {
+        useState,
+        useEffect,
+    } from 'react';
 
     import { AnyAction } from 'redux';
     import { connect } from 'react-redux';
     import { ThunkDispatch } from 'redux-thunk';
+
 
     import {
         Theme,
@@ -17,6 +21,10 @@
     import StateContext from '~kernel-services/state/context';
     import selectors from '~kernel-services/state/selectors';
     // import actions from '~kernel-services/state/actions';
+
+    import {
+        RendsterComponentController,
+    } from '~data/interfaces';
     // #endregion external
 
 
@@ -58,10 +66,44 @@ const Home: React.FC<HomeProperties> = (
     // #endregion properties
 
 
+    // #region state
+    const [
+        components,
+        setComponents,
+    ] = useState<React.FC<any>[]>([]);
+    // #endregion state
+
+
+    // #region effects
+    useEffect(() => {
+        // load components
+    }, []);
+    // #endregion effects
+
+
     // #region render
+    const __rendster =  {
+        registerControllers: (
+            id: string,
+            controllers: RendsterComponentController[],
+        ) => {
+
+        },
+        addToGroup: (
+            id: string,
+            group: string,
+        ) => {
+
+        },
+    };
+
     return (
         <StyledHome>
-            Home
+            {components.map(Component => (
+                <Component
+                    __rendster={__rendster}
+                />
+            ))}
         </StyledHome>
     );
     // #endregion render
