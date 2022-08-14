@@ -54,7 +54,8 @@
 /** ENVIRONMENT */
 const watchMode = process.env.PLURID_WATCH_MODE === 'true';
 const isProduction = process.env.ENV_MODE === 'production';
-const buildDirectory = process.env.PLURID_BUILD_DIRECTORY || 'build';
+// const buildDirectory = process.env.PLURID_BUILD_DIRECTORY || 'build';
+const buildDirectory = 'build/application'; // TOFIX use absolute path
 const port = process.env.PORT || 63000;
 
 
@@ -116,7 +117,7 @@ const options: PluridServerPartialOptions = {
     open: openAtStart,
     quiet,
     debug,
-    serverName: 'Plurid Server',
+    serverName: 'Rendster Server',
     hostname: 'localhost:' + port,
 };
 
