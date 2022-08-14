@@ -20,7 +20,7 @@ export const parseRendster = async (
 
     const outfile = path.join(
         process.cwd(),
-        '/rendster_build/' + filename,
+        '/build/__rendster/' + filename,
     );
 
     const result = await esbuild.build({
