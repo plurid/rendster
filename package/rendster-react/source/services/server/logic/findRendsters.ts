@@ -22,7 +22,7 @@ async function* getFiles(
         },
     );
 
-    for (let file of entries) {
+    for (const file of entries) {
         if (file.isDirectory()) {
             yield* getFiles(`${path}${file.name}/`);
         } else {
