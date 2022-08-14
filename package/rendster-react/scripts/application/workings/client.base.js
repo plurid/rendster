@@ -31,7 +31,7 @@ const styledComponentsTransformer = createStyledComponentsTransformer({
 const copyPlugin = new CopyPlugin({
     patterns: [
         {
-            from: path.resolve(__dirname, '../../source/services/server/application/public'),
+            from: path.resolve(__dirname, '../../../source/services/server/application/public'),
             to: './',
         },
     ],
