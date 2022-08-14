@@ -4,13 +4,6 @@
 
     import esbuild from 'esbuild';
     // #endregion libraries
-
-
-    // #region external
-    import {
-        RENDSTER_BUILD_DIRECTORY,
-    } from '~data/constants';
-    // #endregion external
 // #endregion imports
 
 
@@ -25,7 +18,10 @@ export const parseRendster = async (
         ? parsedPath.dir + '.js'
         : parsedPath.name.replace('.rendster', '') + '.js';
 
-    const outfile = RENDSTER_BUILD_DIRECTORY + filename;
+    const outfile = path.join(
+        __dirname,
+        './application/client/rendsters/' + filename,
+    );
 
     const result = await esbuild.build({
         entryPoints: [

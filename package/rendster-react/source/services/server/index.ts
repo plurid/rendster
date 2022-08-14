@@ -12,7 +12,6 @@
     // #region external
     import {
         RENDSTER_BUILD_DIRECTORY,
-        BUILD_DIRECTORY,
     } from '~data/constants';
     // #endregion external
 
@@ -95,16 +94,6 @@ class Server {
                     recursive: true,
                 },
             );
-
-            const buildDirectory = fs.readdirSync(BUILD_DIRECTORY);
-            if (buildDirectory.length === 0) {
-                fs.rmSync(
-                    BUILD_DIRECTORY,
-                    {
-                        recursive: true,
-                    },
-                );
-            }
         } catch (error) {
             // console.log(error);
         }
