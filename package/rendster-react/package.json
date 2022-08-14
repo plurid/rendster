@@ -44,7 +44,7 @@
         "cli.build.removeTests": "rm -rf `find ./distribution/ -type d -name __tests__`",
         "cli.build.types": "ttsc --emitDeclarationOnly",
         "cli.build.development": "rollup -c ./scripts/build-cli.ts",
-        "cli.build.production": "rollup -c ./scripts/build-cli.ts && pnpm build.types && pnpm build.removeTests",
+        "cli.build.production": "rollup -c ./scripts/build-cli.ts && pnpm cli.build.types && pnpm cli.build.removeTests",
 
         "app.live": "node scripts/application live",
         "app.check": "node scripts/application check",
