@@ -54,7 +54,7 @@
         "app.build.production": "node scripts/application build.production",
 
         "build.development": "pnpm clean && pnpm cli.build.development",
-        "build.production": "pnpm clean && pnpm cli.build.production && pnpm app.build.production",
+        "build.production": "pnpm clean && pnpm app.build.production && pnpm cli.build.production",
 
         "prebuild": "pnpm clean",
         "prepublishOnly": "pnpm build.production"
