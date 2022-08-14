@@ -89,10 +89,10 @@ const commandTest = [
 
 const commandLive = [
     ...commandClean,
-    'mkdir -p build/client',
-    'cp -r source/public/ build/client/',
-    'touch build/client/vendor.js',
-    `node ./scripts/live/client.js & node ./scripts/live/server.js & deon environment ./environment/.env.local.deon nodemon build/index.js`,
+    'mkdir -p build/application/client',
+    'cp -r source/services/server/application/public/ build/application/client/',
+    'touch build/application/client/vendor.js',
+    `node ./scripts/application/live/client.js & node ./scripts/application/live/server.js & deon environment ./environment/.env.local.deon nodemon build/application/index.js`,
 ];
 
 const commandContainerizeProduction = [
@@ -108,21 +108,21 @@ const commandContainerizeProductionStills = [
 ];
 
 const commandBuildClientDevelopment = [
-    `${crossCommand('webpack')} --config ./scripts/workings/client.development.js`,
+    `${crossCommand('webpack')} --config ./scripts/application/workings/client.development.js`,
 ];
 const commandBuildClientProduction = [
-    `${crossCommand('webpack')} --config ./scripts/workings/client.production.js`,
+    `${crossCommand('webpack')} --config ./scripts/application/workings/client.production.js`,
 ];
 
 const commandBuildServerDevelopment = [
-    `${crossCommand('rollup')} -c ./scripts/workings/server.development.js`,
+    `${crossCommand('rollup')} -c ./scripts/application/workings/server.development.js`,
 ];
 const commandBuildServerProduction = [
-    `${crossCommand('rollup')} -c ./scripts/workings/server.production.js`,
+    `${crossCommand('rollup')} -c ./scripts/application/workings/server.production.js`,
 ];
 
 const commandBuildStills = [
-    'node ./scripts/workings/stills.js',
+    'node ./scripts/application/workings/stills.js',
 ];
 
 

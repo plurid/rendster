@@ -9,6 +9,6 @@ esbuild.build({
     ],
     platform: 'node',
     external: ['./node_modules/*'],
-    outdir: 'build',
+    outdir: 'build/application',
     ...common,
 });
