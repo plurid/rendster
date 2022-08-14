@@ -25,10 +25,11 @@ const build = {
         },
     ],
     external: [
-        'commander',
-        'react',
         'fs',
         'path',
+        'commander',
+        'react',
+        'esbuild',
     ],
     watch: {
         include: 'source/**',
