@@ -1,5 +1,7 @@
 // #region imports
     // #region libraries
+    import path from 'node:path';
+
     import PluridServer, {
         PluridServerMiddleware,
         PluridServerService,
@@ -55,7 +57,7 @@
 const watchMode = process.env.PLURID_WATCH_MODE === 'true';
 const isProduction = process.env.ENV_MODE === 'production';
 // const buildDirectory = process.env.PLURID_BUILD_DIRECTORY || 'build';
-const buildDirectory = 'build/application'; // TOFIX use absolute path
+const buildDirectory = 'distribution/application'; // TOFIX use absolute path
 const port = process.env.PORT || 63000;
 
 
