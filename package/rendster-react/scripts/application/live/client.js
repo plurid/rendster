@@ -7,7 +7,7 @@ esbuild.build({
     entryPoints: [
         'source/services/server/application/client/index.tsx',
     ],
-    outdir: 'build/application/client',
+    outdir: 'distribution/application/client',
     define: {
         'process.env.ENV_MODE': JSON.stringify(process.env.ENV_MODE),
         'process.env.SC_DISABLE_SPEEDY': JSON.stringify(true), /** HACK: styled components not rendering in production */

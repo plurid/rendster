@@ -89,10 +89,10 @@ const commandTest = [
 
 const commandLive = [
     ...commandClean,
-    'mkdir -p build/application/client',
-    'cp -r source/services/server/application/public/ build/application/client/',
-    'touch build/application/client/vendor.js',
-    `node ./scripts/application/live/client.js & node ./scripts/application/live/server.js & deon environment ./environment/.env.local.deon nodemon build/application/index.js`,
+    'mkdir -p distribution/application/client',
+    'cp -r source/services/server/application/public/ distribution/application/client/',
+    'touch distribution/application/client/vendor.js',
+    `node ./scripts/application/live/client.js & node ./scripts/application/live/server.js & deon environment ./environment/.env.local.deon nodemon distribution/application/index.js`,
 ];
 
 const commandContainerizeProduction = [
