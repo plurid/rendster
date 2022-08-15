@@ -13,22 +13,16 @@
 
 
     // #region external
-    import {
-        RendsterGroup as IRendsterGroup,
-    } from '~data/interfaces';
-
     import { AppState } from '~kernel-services/state/store';
     import StateContext from '~kernel-services/state/context';
     import selectors from '~kernel-services/state/selectors';
     // import actions from '~kernel-services/state/actions';
-
-    import RendsterComponent from '~kernel-components/RendsterComponent';
     // #endregion external
 
 
     // #region internal
     import {
-        StyledRendsterGroup,
+        StyledRendsterComponent,
     } from './styled';
     // #endregion internal
 // #endregion imports
@@ -36,69 +30,44 @@
 
 
 // #region module
-export interface RendsterGroupOwnProperties {
-    data: IRendsterGroup;
+export interface RendsterComponentOwnProperties {
+    id: string;
 }
 
-export interface RendsterGroupStateProperties {
+export interface RendsterComponentStateProperties {
     stateGeneralTheme: Theme;
     stateInteractionTheme: Theme;
 }
 
-export interface RendsterGroupDispatchProperties {
+export interface RendsterComponentDispatchProperties {
 }
 
-export type RendsterGroupProperties =
-    & RendsterGroupOwnProperties
-    & RendsterGroupStateProperties
-    & RendsterGroupDispatchProperties;
+export type RendsterComponentProperties =
+    & RendsterComponentOwnProperties
+    & RendsterComponentStateProperties
+    & RendsterComponentDispatchProperties;
 
 
-const RendsterGroup: React.FC<RendsterGroupProperties> = (
+const RendsterComponent: React.FC<RendsterComponentProperties> = (
     properties,
 ) => {
     // #region properties
     const {
-        // #region own
-        data,
-        // #endregion own
-
         // #region state
         stateGeneralTheme,
         // stateInteractionTheme,
         // #endregion state
     } = properties;
-
-    const {
-        name,
-        components,
-    } = data;
     // #endregion properties
 
 
     // #region render
     return (
-        <StyledRendsterGroup
+        <StyledRendsterComponent
             theme={stateGeneralTheme}
         >
-            <h2>
-                {name}
-            </h2>
 
-            {components.length === 0 && (
-                <div>
-                    no components
-                </div>
-            )}
-
-            {components.map(component => {
-                return (
-                    <RendsterComponent
-                        id={component}
-                    />
-                );
-            })}
-        </StyledRendsterGroup>
+        </StyledRendsterComponent>
     );
     // #endregion render
 }
@@ -106,7 +75,7 @@ const RendsterGroup: React.FC<RendsterGroupProperties> = (
 
 const mapStateToProperties = (
     state: AppState,
-): RendsterGroupStateProperties => ({
+): RendsterComponentStateProperties => ({
     stateGeneralTheme: selectors.themes.getGeneralTheme(state),
     stateInteractionTheme: selectors.themes.getInteractionTheme(state),
 });
@@ -114,22 +83,22 @@ const mapStateToProperties = (
 
 const mapDispatchToProperties = (
     dispatch: ThunkDispatch<{}, {}, AnyAction>,
-): RendsterGroupDispatchProperties => ({
+): RendsterComponentDispatchProperties => ({
 });
 
 
-const ConnectedRendsterGroup = connect(
+const ConnectedRendsterComponent = connect(
     mapStateToProperties,
     mapDispatchToProperties,
     null,
     {
         context: StateContext,
     },
-)(RendsterGroup);
+)(RendsterComponent);
 // #endregion module
 
 
 
 // #region exports
-export default ConnectedRendsterGroup;
+export default ConnectedRendsterComponent;
 // #endregion exports
