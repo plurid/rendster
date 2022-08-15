@@ -56,4 +56,10 @@ export interface RendsterComponentContext {
         group: string,
     ) => void;
 }
+
+
+export interface RendsterGroup {
+    name: string;
+    components: string[];
+}
 // #endregion exports

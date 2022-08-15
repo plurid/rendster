@@ -2,17 +2,23 @@
     // #region libraries
     import React from 'react';
 
+
     import {
-        PluridLink,
-        PluridRouterLink,
+        uuid,
+    } from '@plurid/plurid-functions';
+
+    import {
         PluridReactComponent,
     } from '@plurid/plurid-react';
     // #endregion libraries
 
 
     // #region external
-    // import pluridLogo from './assets/plurid-logo.png';
-    import pluridLogoSVG from './assets/plurid-logo.svg';
+    import {
+        RendsterGroup as IRendsterGroup,
+    } from '~data/interfaces';
+
+    import RendsterGroup from '~kernel-components/RendsterGroup';
     // #endregion external
 
 
@@ -29,56 +35,36 @@
 const Page: PluridReactComponent<{}> = (
     properties,
 ) => {
-    /** properties */
+    // #region properties
     // const {
     //     plurid,
     // } = properties;
 
+    const groups: IRendsterGroup[] = [
+        {
+            name: 'ungrouped',
+            components: [],
+        },
+    ];
+    // #endregion properties
 
-    /** render */
+
+    // #region render
     return (
         <StyledPage>
-            <div>
-                <a
-                    href="https://plurid.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <img src={pluridLogoSVG} alt="plurid logo" height={250} />
-                    {/* <img src={pluridLogo} alt="plurid logo" height={250} /> */}
-                </a>
-            </div>
-
             <h1>
-                enjoy the plurid' exploration
+                rendster
             </h1>
 
-            <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                }}
-            >
-                <PluridLink
-                    route="/plane"
-                    style={{
-                        color: '~ccc',
-                    }}
-                >
-                    plurid self link
-                </PluridLink>
-
-                <PluridRouterLink
-                    route="/static"
-                    style={{
-                        color: '~ccc',
-                    }}
-                >
-                    router link to static page
-                </PluridRouterLink>
-            </div>
+            {groups.map(group => (
+                <RendsterGroup
+                    key={uuid.generate()}
+                    data={group}
+                />
+            ))}
         </StyledPage>
     );
+    // #endregion render
 }
 // #endregion module
 
