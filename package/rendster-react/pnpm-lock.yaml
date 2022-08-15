@@ -4,7 +4,7 @@ specifiers:
   '@apollo/client': ^3.6.9
   '@plurid/deon': 0.0.0-8
   '@plurid/elementql': ^0.0.0-1
-  '@plurid/elementql-client-react': ^0.0.0-1
+  '@plurid/elementql-client-react': 0.0.0-1
   '@plurid/plurid-data': ^0.0.0-14
   '@plurid/plurid-engine': ^0.0.0-13
   '@plurid/plurid-functions': ^0.0.0-28
